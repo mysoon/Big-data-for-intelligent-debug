@@ -1,0 +1,180 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+
+using System.Net;
+using System.Net.Sockets;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+
+namespace WinFormLm
+{
+    public partial class FormMain : Form
+    {
+        public FormMain()
+        {
+            InitializeComponent();
+        }
+
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {   
+            //登录名显示
+            txtEmployee_id.Text= employee_id;
+            //登录密码显示
+            txtITcode.Text = ITcode;
+
+            GetLocalIP(); 
+        }
+
+        //获取登录名和登录密码
+        public string employee_id;
+        public string ITcode;
+
+        int total = 0;
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            //点击按钮获取点击次数
+             total++;
+             lblCheck_Num.Text= total.ToString();
+             
+            //点击按钮获取当前系统时间
+            txtNowTime.Text = DateTime.Now.ToString();
+
+            //查询表
+            string sql = "select*from codeinfo";
+            dataGridView1.DataSource = SqlHelper.GetList(sql);
+
+            //上传ip地址，当前点击次数，当前时间到数据库
+            Modify();
+
+        }
+
+        private bool Modify() 
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id =txtEmployee_id.Text;
+            code.Date_NowTime = Convert.ToDateTime(txtNowTime.Text);
+            code.PC_Name = txtPcName.Text;
+            code.PC_IP = txtPcIP.Text;
+            code.Check_Num = 1;
+
+            string sql = string.Format("insert into codeinfo(employee_id,PC_IP,PC_Name,Check_Num,Date_NowTime)values ('{0}','{1}','{2}','{3}','{4}')",code.employee_id,code.PC_IP,code.PC_Name,code.Check_Num,code.Date_NowTime);
+
+            int i = SqlHelper.update(sql);
+            return i > 0;
+
+            //Fae_analyzer fae = new Fae_analyzer();
+
+            //MySqlParameter [] ps = {
+            //                           new MySqlParameter("@Check_Num",fae.Check_Num),
+            //                           new MySqlParameter("@@employee_id",fae.employee_id)
+            //                       };
+            //int i = SqlHelper.update(sql,ps);
+
+            //return i>0;
+
+                    
+        }
+
+        private string GetLocalIP() 
+        {
+            string IP = "0.0.0.0";
+
+            try
+            {
+                //获取当前主机名
+                string hostname = Dns.GetHostName();
+                txtPcName.Text = hostname;
+
+                IPAddress[] ipadrlist = Dns.GetHostAddresses(hostname);
+                foreach (IPAddress ipadr in ipadrlist)
+                {
+                    //判断是否是ipv4
+                    if(ipadr.AddressFamily==AddressFamily.InterNetwork)
+                    {
+                        IP = ipadr.ToString();
+                        txtPcIP.Text = IP;     
+                    }
+                }
+                return IP;
+            }
+            catch (Exception)
+            {
+
+                return IP;
+            }
+        }
+
+        
+        private void lblExit_Click(object sender, EventArgs e)
+        {
+            FormLogin fl = new FormLogin();
+            fl.Show();
+            this.Visible = false;
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id = txtID.Text;
+            
+            string sql = "select*from codeinfo where Date_NowTime BETWEEN '"+dateStart.Text+"'AND '"+dateEnd.Text+"' and employee_id='"+txtID.Text+"'";
+            dataGridView1.DataSource = SqlHelper.GetList(sql);
+        }
+
+        private void Link_lbl_forum_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+          
+        }
+
+        //查询某用户某年点击总数（Year）
+        private void btnYearCount_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id = txtID.Text;
+            string sql = "select userinfo.Ana_name,tbCode.employee_id,tbCode.triggerTime,tbCode.triggerCount from(select employee_id,Date_Format(Date_NowTime,'%y')triggerTime,count(employee_id)triggerCount FROM  codeinfo where Date_NowTime BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' and employee_id ='" + code.employee_id + "' GROUP BY triggerTime ORDER BY triggerTime)tbCode inner join userinfo where tbCode.employee_id=userinfo.employee_id;";
+            dataGvTime.DataSource = SqlHelper.GetList(sql);
+        }
+
+        //查询某用户某年某月点击总数（Month）
+        private void btnMonthCount_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id = txtID.Text;
+            string sql = "select userinfo.Ana_name,tbCode.employee_id,tbCode.triggerTime,tbCode.triggerCount from(select employee_id,Date_Format(Date_NowTime,'%y-%m')triggerTime,count(employee_id)triggerCount FROM  codeinfo where Date_NowTime BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' and employee_id='" + code.employee_id + "' GROUP BY triggerTime ORDER BY triggerTime)tbCode inner join userinfo where tbCode.employee_id=userinfo.employee_id;";
+            dataGvTime.DataSource = SqlHelper.GetList(sql);
+        }
+
+        //查询某用户某年某月某日点击总数（Day）
+        private void btnDayCount_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id = txtID.Text;
+            string sql = "select userinfo.Ana_name,tbCode.employee_id,tbCode.triggerTime,tbCode.triggerCount from(select employee_id,Date_Format(Date_NowTime,'%y-%m-%d')triggerTime,count(employee_id)triggerCount FROM  codeinfo where Date_NowTime BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' and employee_id='" + code.employee_id + "' GROUP BY triggerTime ORDER BY triggerTime)tbCode inner join userinfo where tbCode.employee_id=userinfo.employee_id;";
+            dataGvTime.DataSource = SqlHelper.GetList(sql);
+        }
+
+        //查询某用户某年某月某日小时点击总数（Hour）
+        private void btnHourCount_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            code.employee_id = txtID.Text;
+            string sql = "select userinfo.Ana_name,tbCode.employee_id,tbCode.triggerTime,tbCode.triggerCount from(select employee_id,HOUR(Date_NowTime)as triggerTime,COUNT(employee_id)as triggerCount FROM codeinfo where Date_NowTime BETWEEN '"+dateStart.Text+"' AND '"+dateEnd.Text+"' and employee_id='"+txtID.Text+"' GROUP BY HOUR(Date_NowTime) ORDER BY HOUR(Date_NowTime))tbCode inner join userinfo where tbCode.employee_id=userinfo.employee_id;";
+            dataGvTime.DataSource = SqlHelper.GetList(sql);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CodeInfo code = new CodeInfo();
+            string sql = "select Date_Format(Date_NowTime,'%y-%m-%d')triggerTime,count(employee_id)triggerCount FROM  codeinfo where Date_NowTime BETWEEN '"+dateStart.Text+"' AND '"+dateEnd.Text+"' GROUP BY triggerTime ORDER BY triggerTime;";
+            dataGvTime.DataSource = SqlHelper.GetList(sql);
+        }
+    
+    }
+}

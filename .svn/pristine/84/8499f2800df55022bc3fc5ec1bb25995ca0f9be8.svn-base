@@ -1,0 +1,389 @@
+﻿namespace WinFormLm
+{
+    partial class FormStaff
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblReport = new System.Windows.Forms.Label();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.txtCheckOut = new System.Windows.Forms.TextBox();
+            this.txtCheckIn = new System.Windows.Forms.TextBox();
+            this.lblcheckOut = new System.Windows.Forms.Label();
+            this.lblcheckIn = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtOldPwd = new System.Windows.Forms.TextBox();
+            this.lblOldPwd = new System.Windows.Forms.Label();
+            this.lblReNewPwd = new System.Windows.Forms.Label();
+            this.lblNewPwd = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.txtReNewPwd = new System.Windows.Forms.TextBox();
+            this.txtNewPwd = new System.Windows.Forms.TextBox();
+            this.txtAccount = new System.Windows.Forms.TextBox();
+            this.btnModifyPwd = new System.Windows.Forms.Button();
+            this.SN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SNCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SNCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(71, 72);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(692, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 41);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(663, 461);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.lblReport);
+            this.tabPage1.Controls.Add(this.btnUpload);
+            this.tabPage1.Controls.Add(this.dgvReport);
+            this.tabPage1.Controls.Add(this.txtCheckOut);
+            this.tabPage1.Controls.Add(this.txtCheckIn);
+            this.tabPage1.Controls.Add(this.lblcheckOut);
+            this.tabPage1.Controls.Add(this.lblcheckIn);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(655, 434);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "主页";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(373, 94);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(292, 94);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblReport
+            // 
+            this.lblReport.AutoSize = true;
+            this.lblReport.Location = new System.Drawing.Point(36, 109);
+            this.lblReport.Name = "lblReport";
+            this.lblReport.Size = new System.Drawing.Size(35, 13);
+            this.lblReport.TabIndex = 5;
+            this.lblReport.Text = "汇报";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.BackColor = System.Drawing.Color.Cyan;
+            this.btnUpload.FlatAppearance.BorderSize = 0;
+            this.btnUpload.ForeColor = System.Drawing.Color.Transparent;
+            this.btnUpload.Location = new System.Drawing.Point(527, 99);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(93, 33);
+            this.btnUpload.TabIndex = 4;
+            this.btnUpload.Text = "上传";
+            this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // dgvReport
+            // 
+            this.dgvReport.AllowUserToAddRows = false;
+            this.dgvReport.AllowUserToDeleteRows = false;
+            this.dgvReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SN,
+            this.SNCheckIn,
+            this.SNCheckOut,
+            this.employeeid});
+            this.dgvReport.Location = new System.Drawing.Point(39, 138);
+            this.dgvReport.Name = "dgvReport";
+            this.dgvReport.ReadOnly = true;
+            this.dgvReport.RowTemplate.Height = 23;
+            this.dgvReport.Size = new System.Drawing.Size(581, 247);
+            this.dgvReport.TabIndex = 3;
+            this.dgvReport.VirtualMode = true;
+            // 
+            // txtCheckOut
+            // 
+            this.txtCheckOut.AcceptsReturn = true;
+            this.txtCheckOut.Location = new System.Drawing.Point(438, 55);
+            this.txtCheckOut.Name = "txtCheckOut";
+            this.txtCheckOut.Size = new System.Drawing.Size(182, 22);
+            this.txtCheckOut.TabIndex = 2;
+            // 
+            // txtCheckIn
+            // 
+            this.txtCheckIn.AcceptsReturn = true;
+            this.txtCheckIn.Location = new System.Drawing.Point(129, 52);
+            this.txtCheckIn.Name = "txtCheckIn";
+            this.txtCheckIn.Size = new System.Drawing.Size(182, 22);
+            this.txtCheckIn.TabIndex = 2;
+            // 
+            // lblcheckOut
+            // 
+            this.lblcheckOut.AutoSize = true;
+            this.lblcheckOut.Location = new System.Drawing.Point(337, 55);
+            this.lblcheckOut.Name = "lblcheckOut";
+            this.lblcheckOut.Size = new System.Drawing.Size(95, 13);
+            this.lblcheckOut.TabIndex = 1;
+            this.lblcheckOut.Text = "SNCheckOut:";
+            // 
+            // lblcheckIn
+            // 
+            this.lblcheckIn.AutoSize = true;
+            this.lblcheckIn.Location = new System.Drawing.Point(36, 55);
+            this.lblcheckIn.Name = "lblcheckIn";
+            this.lblcheckIn.Size = new System.Drawing.Size(87, 13);
+            this.lblcheckIn.TabIndex = 0;
+            this.lblcheckIn.Text = "SNCheckIn:";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.txtOldPwd);
+            this.tabPage2.Controls.Add(this.lblOldPwd);
+            this.tabPage2.Controls.Add(this.lblReNewPwd);
+            this.tabPage2.Controls.Add(this.lblNewPwd);
+            this.tabPage2.Controls.Add(this.lblAccount);
+            this.tabPage2.Controls.Add(this.txtReNewPwd);
+            this.tabPage2.Controls.Add(this.txtNewPwd);
+            this.tabPage2.Controls.Add(this.txtAccount);
+            this.tabPage2.Controls.Add(this.btnModifyPwd);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(655, 434);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "修改密码";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtOldPwd
+            // 
+            this.txtOldPwd.Location = new System.Drawing.Point(198, 125);
+            this.txtOldPwd.Name = "txtOldPwd";
+            this.txtOldPwd.Size = new System.Drawing.Size(100, 22);
+            this.txtOldPwd.TabIndex = 6;
+            // 
+            // lblOldPwd
+            // 
+            this.lblOldPwd.AutoSize = true;
+            this.lblOldPwd.Location = new System.Drawing.Point(87, 125);
+            this.lblOldPwd.Name = "lblOldPwd";
+            this.lblOldPwd.Size = new System.Drawing.Size(57, 13);
+            this.lblOldPwd.TabIndex = 5;
+            this.lblOldPwd.Text = "原密码:";
+            // 
+            // lblReNewPwd
+            // 
+            this.lblReNewPwd.AutoSize = true;
+            this.lblReNewPwd.Location = new System.Drawing.Point(87, 230);
+            this.lblReNewPwd.Name = "lblReNewPwd";
+            this.lblReNewPwd.Size = new System.Drawing.Size(85, 13);
+            this.lblReNewPwd.TabIndex = 4;
+            this.lblReNewPwd.Text = "确认新密码:";
+            // 
+            // lblNewPwd
+            // 
+            this.lblNewPwd.AutoSize = true;
+            this.lblNewPwd.Location = new System.Drawing.Point(87, 176);
+            this.lblNewPwd.Name = "lblNewPwd";
+            this.lblNewPwd.Size = new System.Drawing.Size(57, 13);
+            this.lblNewPwd.TabIndex = 4;
+            this.lblNewPwd.Text = "新密码:";
+            // 
+            // lblAccount
+            // 
+            this.lblAccount.AutoSize = true;
+            this.lblAccount.Location = new System.Drawing.Point(87, 77);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(57, 13);
+            this.lblAccount.TabIndex = 4;
+            this.lblAccount.Text = "原账号:";
+            // 
+            // txtReNewPwd
+            // 
+            this.txtReNewPwd.Location = new System.Drawing.Point(198, 227);
+            this.txtReNewPwd.Name = "txtReNewPwd";
+            this.txtReNewPwd.Size = new System.Drawing.Size(100, 22);
+            this.txtReNewPwd.TabIndex = 3;
+            // 
+            // txtNewPwd
+            // 
+            this.txtNewPwd.Location = new System.Drawing.Point(198, 176);
+            this.txtNewPwd.Name = "txtNewPwd";
+            this.txtNewPwd.Size = new System.Drawing.Size(100, 22);
+            this.txtNewPwd.TabIndex = 2;
+            // 
+            // txtAccount
+            // 
+            this.txtAccount.Location = new System.Drawing.Point(198, 74);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.ReadOnly = true;
+            this.txtAccount.Size = new System.Drawing.Size(100, 22);
+            this.txtAccount.TabIndex = 1;
+            // 
+            // btnModifyPwd
+            // 
+            this.btnModifyPwd.Location = new System.Drawing.Point(161, 267);
+            this.btnModifyPwd.Name = "btnModifyPwd";
+            this.btnModifyPwd.Size = new System.Drawing.Size(75, 23);
+            this.btnModifyPwd.TabIndex = 0;
+            this.btnModifyPwd.Text = "修改密码";
+            this.btnModifyPwd.UseVisualStyleBackColor = true;
+            this.btnModifyPwd.Click += new System.EventHandler(this.btnModifyPwd_Click);
+            // 
+            // SN
+            // 
+            this.SN.DataPropertyName = "SN";
+            this.SN.HeaderText = "SN";
+            this.SN.Name = "SN";
+            this.SN.ReadOnly = true;
+            // 
+            // SNCheckIn
+            // 
+            this.SNCheckIn.DataPropertyName = "SNCheckIn";
+            this.SNCheckIn.HeaderText = "录入时间";
+            this.SNCheckIn.Name = "SNCheckIn";
+            this.SNCheckIn.ReadOnly = true;
+            // 
+            // SNCheckOut
+            // 
+            this.SNCheckOut.DataPropertyName = "SNCheckOut";
+            this.SNCheckOut.HeaderText = "结束时间";
+            this.SNCheckOut.Name = "SNCheckOut";
+            this.SNCheckOut.ReadOnly = true;
+            // 
+            // employeeid
+            // 
+            this.employeeid.DataPropertyName = "employee_id";
+            this.employeeid.HeaderText = "操作人";
+            this.employeeid.Name = "employeeid";
+            this.employeeid.ReadOnly = true;
+            // 
+            // FormStaff
+            // 
+            this.AcceptButton = this.button1;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(692, 655);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "FormStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "员工界面";
+            this.Load += new System.EventHandler(this.FormStaff_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox txtOldPwd;
+        private System.Windows.Forms.Label lblOldPwd;
+        private System.Windows.Forms.Label lblReNewPwd;
+        private System.Windows.Forms.Label lblNewPwd;
+        private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.TextBox txtReNewPwd;
+        private System.Windows.Forms.TextBox txtNewPwd;
+        private System.Windows.Forms.TextBox txtAccount;
+        private System.Windows.Forms.Button btnModifyPwd;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.DataGridView dgvReport;
+        private System.Windows.Forms.TextBox txtCheckOut;
+        private System.Windows.Forms.TextBox txtCheckIn;
+        private System.Windows.Forms.Label lblcheckOut;
+        private System.Windows.Forms.Label lblcheckIn;
+        private System.Windows.Forms.Label lblReport;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SNCheckIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SNCheckOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeid;
+    }
+}

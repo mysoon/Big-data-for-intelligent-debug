@@ -1,0 +1,204 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace WinFormLm
+{
+    public partial class FormStaff : Form
+    {
+        public FormStaff()
+        {
+            InitializeComponent();
+        }
+        public string employee_id;
+        public string ITcode;
+        DataTable dt = new DataTable();
+        DataSet ds = new DataSet();
+        private void btnModifyPwd_Click(object sender, EventArgs e)
+        {
+            
+            if (txtAccount.Text=="") 
+            {
+                MessageBox.Show("原账号不能为空！");
+                return;
+            }
+
+            if (txtOldPwd.Text=="")
+            {
+                MessageBox.Show("原密码不能为空！");
+                return;
+            }
+
+            if (txtNewPwd.Text=="")
+            {
+                MessageBox.Show("新密码不能为空！");
+                return;
+               
+            }
+
+            if (txtReNewPwd.Text=="")
+            {
+                MessageBox.Show("确认密码不能为空！");
+                return;
+            }
+
+            UserInfo user = new UserInfo();
+            user.ITcode = txtNewPwd.Text;
+            user.employee_id = txtAccount.Text;
+
+            if (txtOldPwd.Text != ITcode) 
+            {
+                MessageBox.Show("原密码输入错误，请重新输入！");
+                return;
+            }
+
+            if (txtOldPwd.Text.Trim() == txtNewPwd.Text.Trim()) 
+            {
+                MessageBox.Show("新密码不能与原密码相同！请重设密码！");
+                return;
+            }
+
+            if (txtReNewPwd.Text != txtNewPwd.Text) 
+            {
+                MessageBox.Show("确认密码与新密码不一致，请重新输入！");
+                return;
+            }
+            
+            string sql = string.Format("update userinfo set ITcode='{0}' where employee_id='{1}'",user.ITcode,user.employee_id);
+
+            if (SqlHelper.modify(sql))
+            {
+                MessageBox.Show("修改密码成功,请重新登录！");
+                FormLogin fl = new FormLogin();
+                fl.Show();
+                this.Visible = false;
+            }
+            else 
+            {
+                MessageBox.Show("修改密码失败！");
+                return;
+            }
+           
+        }
+
+        private void FormStaff_Load(object sender, EventArgs e)
+        {
+            //dt.Columns.Add("SN", typeof(string));
+            //dt.Columns.Add("SNCheckIn", typeof(string));
+            //dt.Columns.Add("SNCheckOut", typeof(string));
+            //dt.Columns.Add("employee_id", typeof(int));
+            //ds.Tables.Add(dt);
+
+            txtAccount.Text = employee_id;
+            
+            //进入页面删除备用表
+            DelBleck();
+        }
+
+        private bool InserSNcheckIn()
+        {
+            CkTimeInfo ck = new CkTimeInfo();
+            ck.SN = txtCheckIn.Text.Trim();
+            ck.SNCheckIn = DateTime.Now.ToString();
+
+            string sql = string.Format("insert into cktimeinfo(employee_id,SN,SNCheckIn)values ('{0}','{1}','{2}')", employee_id, ck.SN, ck.SNCheckIn);
+            txtCheckIn.Text = string.Empty;
+            txtCheckOut.Text = string.Empty;
+            return SqlHelper.modify(sql);
+
+        }
+
+        private bool UpdateSNcheckOut()
+        {
+            CkTimeInfo ck = new CkTimeInfo();
+            ck.SNCheckOut = DateTime.Now.ToString();
+            ck.SN = txtCheckOut.Text.Trim();
+            string sql = string.Format("update cktimeinfo SET SNCheckOut='{0}' where SN='{1}'", ck.SNCheckOut, ck.SN);
+            txtCheckIn.Text = string.Empty;
+            txtCheckOut.Text = string.Empty;
+            return SqlHelper.modify(sql);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+              
+            if (txtCheckIn.Text.Trim() != null)
+            {
+                //DataRow row = dt.NewRow();
+                //row[0] = txtCheckIn.Text.Trim();
+                //row[1] =DateTime.Now.ToString();
+                //row[2] = "0000/00/00 00:00:00";
+                //row[3] = employee_id;
+                //dt.Rows.Add(row);
+                //this.dgvReport.DataSource = ds.Tables[0];
+                //txtCheckIn.Text = string.Empty;
+                //txtCheckOut.Text = string.Empty;
+                
+                
+                InserSNcheckIn();
+                string sql = "select*from cktimeinfo";
+                dgvReport.DataSource = SqlHelper.GetList(sql);
+
+            }
+           
+                
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(txtCheckOut.Text.Trim()!=null)
+            {
+                UpdateSNcheckOut();
+                string sql = string.Format("select*from cktimeinfo");
+                dgvReport.DataSource = SqlHelper.GetList(sql);
+            }
+          
+        }
+
+        private int InsertBlack() 
+        {
+
+            int a =0;
+            for (int i = 0; i <dgvReport.Rows.Count; i++) 
+            {
+                black_unusual black = new black_unusual();
+                black.SN = dgvReport.Rows[i].Cells[0].Value.ToString();
+                black.SNCheckIn = dgvReport.Rows[i].Cells[1].Value.ToString();
+                black.SNCheckOut = dgvReport.Rows[i].Cells[2].Value.ToString();    
+                black.employee_id = dgvReport.Rows[i].Cells[3].Value.ToString();
+                string sql = string.Format("insert into black_unusual(SN,SNCheckIn,SNCheckOut,employee_id)values('{0}','{1}','{2}','{3}')", black.SN, black.SNCheckIn, black.SNCheckOut,black.employee_id);
+                a = SqlHelper.update(sql);
+            }
+            return a;
+           
+        }
+
+        private bool DelBleck() 
+        {
+            string sql = "delete from cktimeinfo";
+            return SqlHelper.modify(sql);
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("上传成功，数据已被清空！");
+            InsertBlack();
+            DelBleck();
+        }
+
+
+       
+
+     
+
+    }
+}
