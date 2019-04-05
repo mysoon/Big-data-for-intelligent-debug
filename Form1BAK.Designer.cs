@@ -116,8 +116,8 @@
             // 
             this.dgvRootCauseFAE.AllowUserToAddRows = false;
             this.dgvRootCauseFAE.AllowUserToDeleteRows = false;
-            this.dgvRootCauseFAE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRootCauseFAE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRootCauseFAE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRootCauseFAE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRootCauseFAE.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -904,7 +904,7 @@
             // helpProvider1
             // 
             this.helpProvider1.HelpNamespace = "C:\\Users\\Administrator\\Documents\\Visual Studio 2010\\Projects\\WindowsFormsApplicat" +
-    "ion1\\WindowsFormsApplication1\\bin\\Debug\\大数据辅助分析系统v2.2安装使用说明.txt";
+                "ion1\\WindowsFormsApplication1\\bin\\Debug\\大数据辅助分析系统v2.2安装使用说明.txt";
             // 
             // ofd
             // 
@@ -926,7 +926,7 @@
             this.HelpButton = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "大数据辅助分析系统v4.0";
+            this.Text = "大数据辅助分析系统v3.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRootCauseFAE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRootCauseMES)).EndInit();

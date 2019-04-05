@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1
             string faeQueryStr=null;
             string mesQueryStr=null;
            
-            string multiQueryStr = null;
+            //string multiQueryStr = null;
 
             string testAndDebugQueryStr = null;
             if (cbbProductName.Text == "--请输入产品名--")
@@ -268,17 +268,15 @@ namespace WindowsFormsApplication1
                 // dgvRootCauseMES.DataSource = null;
                 report = new DataSet();
 
-                report = GetMultiQueryResultSet(faeQueryStr,mesQueryStr,testAndDebugQueryStr);
-             
+                report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
+                //report = SqlHelper.GetQueryResultSet(multiQueryStr);
                 dgvRootCauseFAE.DataSource = report.Tables["User1"];
                 dgvRootCauseMES.DataSource = report.Tables["User2"];
                 int rowsCount = report.Tables["User3"].Rows.Count;
-               
                 if (rowsCount > 0)
                 {
                     testDescription.Text = report.Tables["User3"].Rows[0]["Decription"].ToString();
                     analysisThink.Text = report.Tables["User3"].Rows[0]["Guide"].ToString();
-                  
                 }
                 else
                 {
@@ -331,18 +329,15 @@ namespace WindowsFormsApplication1
                           "select T.Test_explain as Decription,D.Analysis_Guide as Guide from test_explanation as T LEFT JOIN debug_guide as D ON T.Analysis_ID=D.Analysis_ID ",
                          "where T.Testcode like 'QBOOT_BLANK%' limit 1"
                          });
-                multiQueryStr = faeQueryStr+";"+mesQueryStr+";"+testAndDebugQueryStr;
-                //report = GetMultiQueryResultSet(faeQueryStr,mesQueryStr,testAndDebugQueryStr);
-                report =SqlHelper.GetQueryResultSet(multiQueryStr);
-                //dgvRootCauseFAE.DataSource = report.Tables["User1"];
-                //dgvRootCauseMES.DataSource = report.Tables["User2"];
-
-                dgvRootCauseFAE.DataSource = report.Tables[0];
-                dgvRootCauseMES.DataSource = report.Tables[1];
+                //multiQueryStr = "faeQueryStr;mesQueryStr;testAndDebugQueryStr";
+                report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
+                //report =SqlHelper.GetQueryResultSet(multiQueryStr);
+                dgvRootCauseFAE.DataSource = report.Tables["User1"];
+                dgvRootCauseMES.DataSource = report.Tables["User2"];
             }
 
 
-            //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
+        //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
             Modify();
         }
 
@@ -621,7 +616,7 @@ namespace WindowsFormsApplication1
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
           
-            Process.Start(Application.StartupPath + @"\大数据辅助分析系统v4.0安装使用说明.txt");
+            Process.Start(Application.StartupPath + @"\大数据辅助分析系统v2.2安装使用说明.txt");
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -632,8 +627,8 @@ namespace WindowsFormsApplication1
         private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogin flogin = new FormLogin();
-            flogin.Show(this);
-
+            flogin.Show();
+            this.Visible = false;
         }
 
        

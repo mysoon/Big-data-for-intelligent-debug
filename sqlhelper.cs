@@ -96,18 +96,18 @@ namespace WindowsFormsApplication1
             DataSet myDataSet = new DataSet();
 
 
-            //MySqlCommand mySqlCommandQuery = new MySqlCommand(queryStr, myConnection);
+            MySqlCommand mySqlCommandQuery = new MySqlCommand(queryStr, myConnection);
 
             try
             {
                 myConnection.Open();
-                //mySqlCommandQuery.Prepare();
+                mySqlCommandQuery.Prepare();
 
                 //MessageBox.Show(faeQueryStr);
                 //myDataSet = new DataSet();
                 //myDataSet2 = new DataSet();
-                //MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(mySqlCommandQuery);
-                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(queryStr, myConnection);
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(mySqlCommandQuery);
+
 
 
                 //myDataAdapter.Fill(myDataSet, "User4");
