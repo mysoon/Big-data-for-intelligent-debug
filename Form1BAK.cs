@@ -82,39 +82,77 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            DataSet report;
+           
             string startDate = dateTimePicker1.Value.ToShortDateString();
 
             string endDate = dateTimePicker2.Value.ToShortDateString();
+            DataSet report = null;
             string faeQueryStr=null;
             string mesQueryStr=null;
-           
-            //string multiQueryStr = null;
-
+            string multiQueryStr = null;
             string testAndDebugQueryStr = null;
+            string productName = null;
+            string testItem = null;
+
+            string SN = SnTextBox.Text;
+            string mesReportName = "mesreport";
+            string processLocation = feOrBe.Text;
             if (cbbProductName.Text == "--请输入产品名--")
             {
                 cbbProductName.Text = null;
+
             }
+            productName = cbbProductName.Text;
             if (cbbTestItem.Text == "--请输入关键字--")
             {
                 cbbTestItem.Text = null;
+
             }
-           
-            string productName=cbbProductName.Text;
-            string testItem=cbbTestItem.Text;
-            string SN= SnTextBox.Text;
-            string mesReportName= "mesreport";
-            string processLocation = feOrBe.Text;
+            testItem = cbbTestItem.Text;
             if (processLocation == "BE")
             {
                 mesReportName = "mesreport_be";
 
             }
-            if (string.IsNullOrEmpty(SN))
+
+            
+
+            if (!string.IsNullOrEmpty(SN))
             {
+                faeQueryStr = string.Concat(new string[]
+                                      {
+                          "select Product,Test_code,Analysis_method,Root_cause from faereport ",
+                         "where SN = \"",
+                         SN,
+                         "\""
+                                      });
+                mesQueryStr = string.Concat(new string[]
+                       {
+                          "select Product,Test_code,Root_cause from ",mesReportName,
+                         " where SN = \"",
+                         SN,
+                         "\""
+                       });
+                testAndDebugQueryStr = string.Concat(new string[]
+                       {
+                          "select T.Test_explain as Decription,D.Analysis_Guide as Guide from test_explanation as T LEFT JOIN debug_guide as D ON T.Analysis_ID=D.Analysis_ID ",
+                         "where T.Testcode like 'QBOOT_BLANK%' limit 1"
+                         });
+                multiQueryStr = faeQueryStr+";"+mesQueryStr+";"+testAndDebugQueryStr;
+                //report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
+                report =SqlHelper.GetQueryResultSet(multiQueryStr);
+                dgvRootCauseFAE.DataSource = report.Tables[0];
+                dgvRootCauseMES.DataSource = report.Tables[1];
+                return;
+            }
+            if (string.IsNullOrEmpty(productName) && string.IsNullOrEmpty(testItem))
+            {
+                MessageBox.Show("测试项为空，请重新输入");
+                return;
+            }
+
                 if (!string.IsNullOrEmpty(productName) && !string.IsNullOrEmpty(testItem))
-                {
+                 {
                     //1.get 20 letters from left;2.get letters before '('or'['.
                     faeQueryStr = string.Concat(new string[]
                        {
@@ -211,7 +249,7 @@ namespace WindowsFormsApplication1
                        });
 
                 }
-                else if (!string.IsNullOrEmpty(productName))
+                else
                 {
                     faeQueryStr = string.Concat(new string[]
                        {
@@ -256,27 +294,23 @@ namespace WindowsFormsApplication1
                                               + "group by Product,Test_code)as T2 WHERE T1.Product=T2.Product and T1.Test_code=T2.Test_code order by T1.co desc";
                 }
 
-                else
-                {
-                    MessageBox.Show("测试项为空，请重新输入");
-                    return;
-                }
+              
 
-                //multiQueryStr = "faeQueryStr;mesQueryStr;testAndDebugQueryStr";
+                multiQueryStr = faeQueryStr+";"+mesQueryStr+";"+testAndDebugQueryStr;
 
                 // dgvRootCauseFAE.DataSource = null;
                 // dgvRootCauseMES.DataSource = null;
-                report = new DataSet();
+                //report = new DataSet();
 
-                report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
-                //report = SqlHelper.GetQueryResultSet(multiQueryStr);
-                dgvRootCauseFAE.DataSource = report.Tables["User1"];
-                dgvRootCauseMES.DataSource = report.Tables["User2"];
-                int rowsCount = report.Tables["User3"].Rows.Count;
+                //report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
+                report = SqlHelper.GetQueryResultSet(multiQueryStr);
+                dgvRootCauseFAE.DataSource = report.Tables[0];
+                dgvRootCauseMES.DataSource = report.Tables[1];
+                int rowsCount = report.Tables[2].Rows.Count;
                 if (rowsCount > 0)
                 {
-                    testDescription.Text = report.Tables["User3"].Rows[0]["Decription"].ToString();
-                    analysisThink.Text = report.Tables["User3"].Rows[0]["Guide"].ToString();
+                    testDescription.Text = report.Tables[2].Rows[0]["Decription"].ToString();
+                    analysisThink.Text = report.Tables[2].Rows[0]["Guide"].ToString();
                 }
                 else
                 {
@@ -307,38 +341,12 @@ namespace WindowsFormsApplication1
               
                 chart1.DataBind();
                 //DataView dv = new DataView(dt);
-        }
-            else
-            {
-                faeQueryStr = string.Concat(new string[]
-                       {
-                          "select Product,Test_code,Analysis_method,Root_cause from faereport ",
-                         "where SN = \"",
-                         SN,
-                         "\""
-                       });
-                mesQueryStr = string.Concat(new string[]
-                       {
-                          "select Product,Test_code,Root_cause from ",mesReportName,
-                         " where SN = \"",
-                         SN,
-                         "\""
-                       });
-                testAndDebugQueryStr = string.Concat(new string[]
-                       {
-                          "select T.Test_explain as Decription,D.Analysis_Guide as Guide from test_explanation as T LEFT JOIN debug_guide as D ON T.Analysis_ID=D.Analysis_ID ",
-                         "where T.Testcode like 'QBOOT_BLANK%' limit 1"
-                         });
-                //multiQueryStr = "faeQueryStr;mesQueryStr;testAndDebugQueryStr";
-                report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
-                //report =SqlHelper.GetQueryResultSet(multiQueryStr);
-                dgvRootCauseFAE.DataSource = report.Tables["User1"];
-                dgvRootCauseMES.DataSource = report.Tables["User2"];
-            }
+        
+           
 
 
         //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
-            Modify();
+           // Modify();
         }
 
         private bool Modify()
@@ -370,64 +378,7 @@ namespace WindowsFormsApplication1
             return i > 0;
         }
 
-        /// <summary>
-        /// 从faereport和mesreport中查询某一测试项的分析结果，
-        /// 及该测试项的中文解释（test_explanation）和分析指南（debug_guide）
-        /// </summary>
-        /// <param name="queryStr1"></param>
-        /// <param name="queryStr2"></param>
-        /// <param name="queryStr3"></param>
-        /// <returns></returns>
-        private DataSet GetMultiQueryResultSet(string queryStr1, string queryStr2, string queryStr3)
-        {
-            //string connectionString = "Server=127.0.0.1;User ID=root;Password=;Database=fae_weekly;CharSet=utf8;";
-
-            MySqlConnection myConnection;
-            myConnection = SqlHelper.myGetConnection();
-           
-            DataSet myDataSet = null;
-
-
-            MySqlCommand mySqlCommandQuery1 = new MySqlCommand(queryStr1, myConnection);
-            MySqlCommand mySqlCommandQuery2 = new MySqlCommand(queryStr2, myConnection);
-            MySqlCommand mySqlCommandQuery3 = new MySqlCommand(queryStr3, myConnection);
-            try
-            {
-                myConnection.Open();
-                mySqlCommandQuery1.Prepare();
-                mySqlCommandQuery2.Prepare();
-                //MessageBox.Show(faeQueryStr);
-                myDataSet = new DataSet();
-                //myDataSet2 = new DataSet();
-                MySqlDataAdapter myDataAdapter1 = new MySqlDataAdapter(mySqlCommandQuery1);
-                MySqlDataAdapter myDataAdapter2 = new MySqlDataAdapter(mySqlCommandQuery2);
-                MySqlDataAdapter myDataAdapter3 = new MySqlDataAdapter(mySqlCommandQuery3);
-
-                myDataAdapter1.Fill(myDataSet, "User1");
-                myDataAdapter2.Fill(myDataSet, "User2");
-                myDataAdapter3.Fill(myDataSet, "User3");
-                //myDataTable = myDataSet.Tables[0];
-
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
-                        break;
-                    case 1045:
-                        MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
-                        break;
-                }
-            }
-            finally
-            {
-                myConnection.Close();
-                
-            }
-            return myDataSet;
-        }
+        
 
        
         ///// <summary>
@@ -469,16 +420,7 @@ namespace WindowsFormsApplication1
         //}
         
 
-        /*private void Form1_MouseWheel(object sender, MouseEventArgs e)
-        {
-            // get screen point
-            Point mousePoint = Form1.PointToScreen(e.Location);
-            // whether in panel
-            if (this.pnlImage.RectangleToScreen(this.pnlImage.ClientRectangle).Contains(mousePoint))
-            {
-                this.pnlImage.AutoScrollPosition = new Point(this.pnlImage.HorizontalScroll.Value, pnlImage.VerticalScroll.Value - e.Delta);
-            }
-        }*/
+      
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -616,7 +558,7 @@ namespace WindowsFormsApplication1
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
           
-            Process.Start(Application.StartupPath + @"\大数据辅助分析系统v2.2安装使用说明.txt");
+            Process.Start(Application.StartupPath + @"\大数据辅助分析系统v4.0安装使用说明.txt");
         }
 
         private void label7_Click(object sender, EventArgs e)
