@@ -125,27 +125,6 @@ namespace WinFormLm
        }
 
 
-       /// <summary>
-       /// 获取配置文件的连接字符串
-       /// </summary>
-       /// <returns></returns>
-       //public static MySqlConnection myGetConnection()
-       //{
-       //    string connectionString = string.Empty;
-       //    MySqlConnection mySQLConnection;
-       //    //connectionString = "Server=10.114.113.10;User ID=fae;Password=fae2018;Database=fae_weekly;CharSet=utf8;";
-       //    if (ConfigurationManager.AppSettings["DBConnStr"] != null)
-       //    {
-       //        connectionString = ConfigurationManager.AppSettings["DBConnStr"];
-       //    }
-       //    else
-       //    {
-       //        connectionString = "Server=10.114.113.10;User ID=fae;Password=fae2018;Database=fae_weekly;CharSet=utf8;";
-
-       //    }
-       //    mySQLConnection = new MySqlConnection(connectionString);
-       //    //MessageBox.Show(connectionString);
-       //    return mySQLConnection;
-       //}
+      
     }
 }
