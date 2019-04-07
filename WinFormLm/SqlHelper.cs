@@ -12,7 +12,7 @@ namespace WinFormLm
    public class SqlHelper
     {
         public static string MyCon = ConfigurationManager.AppSettings["DBConnStr"];
-        //public static string MyCon = "Server=10.114.113.10;User ID=fae;Password=fae2018;Database=fae_weekly;CharSet=utf8;";
+        
         //public static string MyCon = "server=127.0.0.1;user id=root;password=123456;database=fae_weekly;charset=utf8;";
         /// <summary>
         /// 查询
@@ -95,7 +95,7 @@ namespace WinFormLm
                 }
                 catch(MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   // MessageBox.Show(ex.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return 0;
                 }
            }
