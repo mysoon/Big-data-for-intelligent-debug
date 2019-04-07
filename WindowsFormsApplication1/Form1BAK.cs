@@ -72,7 +72,7 @@ namespace WindowsFormsApplication1
                          "where T.Testcode like 'QBOOT_BLANK%' limit 1"
                          });
                 multiQueryStr = faeQueryStr + ";" + mesQueryStr + ";" + testAndDebugQueryStr;             
-                report = FaeSqlHelper.GetQueryResultSet(multiQueryStr);
+                report = SqlHelper.GetQueryResultSet(multiQueryStr);
                 dgvRootCauseFAE.DataSource = report.Tables[0];
                 dgvRootCauseMES.DataSource = report.Tables[1];
                 return;
@@ -273,7 +273,7 @@ namespace WindowsFormsApplication1
 
 
         //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
-           // Modify();
+           Modify();
         }
 
         private bool Modify()
