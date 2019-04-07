@@ -94,7 +94,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FaeSqlhelper.cs" />
     <EmbeddedResource Include="FAEentrance.resx">
       <DependentUpon>FAEentrance.cs</DependentUpon>
     </EmbeddedResource>
