@@ -85,6 +85,7 @@
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRootCauseFAE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRootCauseMES)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -116,8 +117,8 @@
             // 
             this.dgvRootCauseFAE.AllowUserToAddRows = false;
             this.dgvRootCauseFAE.AllowUserToDeleteRows = false;
-            this.dgvRootCauseFAE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRootCauseFAE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRootCauseFAE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRootCauseFAE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRootCauseFAE.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -602,6 +603,7 @@
             // 
             this.tabPage1.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.feOrBe);
             this.tabPage1.Controls.Add(this.label1);
@@ -904,7 +906,7 @@
             // helpProvider1
             // 
             this.helpProvider1.HelpNamespace = "C:\\Users\\Administrator\\Documents\\Visual Studio 2010\\Projects\\WindowsFormsApplicat" +
-                "ion1\\WindowsFormsApplication1\\bin\\Debug\\大数据辅助分析系统v2.2安装使用说明.txt";
+    "ion1\\WindowsFormsApplication1\\bin\\Debug\\大数据辅助分析系统v2.2安装使用说明.txt";
             // 
             // ofd
             // 
@@ -913,6 +915,16 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(682, 34);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -1008,6 +1020,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox feOrBe;
         private System.Windows.Forms.ToolStripMenuItem 登录ToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
 

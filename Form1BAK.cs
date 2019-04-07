@@ -22,58 +22,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-
-       // string connectionString = ConfigurationManager.AppSettings["DBConnStr"];
-        // string serverIPAddress = "'" + serverIP.text;
-        //string connectionString = "Server="+serverIPAddress+";User ID=root;Password=;Database=fae_weekly;CharSet=utf8;";
-        //DataSet localDataSet;
-
-        // string connectionString = "Server=10.114.113.10;User ID=fae;Password=fae2018;Database=fae_weekly;CharSet=utf8;";
-
         public Form1()
         {
             InitializeComponent();
-            //this.pictureBox1.MouseWheel += new MouseEventHandler(PictureBox1_MouseWheel);   
-            //localDataSet = null;
             dateTimePicker1.Text = "2017-12-31";
             dateTimePicker2.Text = DateTime.Now.ToShortDateString();
         }
-
-        /* private void PictureBox1_MouseWheel(object sender, MouseEventArgs e)
-         {
-             this.pictureBox1.Focus();
-             System.Drawing.Size t = pictureBox1.Size;
-             t.Width += e.Delta;
-             t.Height += e.Delta;
-             pictureBox1.Width = t.Width;
-             pictureBox1.Height = t.Height;
-         }*/
-        /*private override void OnMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Delta > 0)
-            {
-                if ((VScrollBar.Value - 10) < vScrollBar1.Minimum)
-                {
-                    vScrollBar1.Value = vScrollBar1.Minimum;
-                }
-                else
-                {
-                    this.VScrollBar.Value -= 10;
-               // }
-            }
-            else
-            {
-                if ((VScrollBar.Value + 10) > vScrollBar1.Maximum)
-                {
-                    vScrollBar1.Value = vScrollBar1.Maximum;
-                }
-                else
-                {
-                    vScrollBar1.Value += 10;
-                }
-            }
-
-        }*/
 
         /// <summary>
         /// 按产品或测试项查询分析结果
@@ -81,10 +35,8 @@ namespace WindowsFormsApplication1
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnQuery_Click(object sender, EventArgs e)
-        {
-           
+        {          
             string startDate = dateTimePicker1.Value.ToShortDateString();
-
             string endDate = dateTimePicker2.Value.ToShortDateString();
             DataSet report = null;
             string faeQueryStr=null;
@@ -93,30 +45,11 @@ namespace WindowsFormsApplication1
             string testAndDebugQueryStr = null;
             string productName = null;
             string testItem = null;
-
             string SN = SnTextBox.Text;
             string mesReportName = "mesreport";
             string processLocation = feOrBe.Text;
-            if (cbbProductName.Text == "--请输入产品名--")
-            {
-                cbbProductName.Text = null;
 
-            }
-            productName = cbbProductName.Text;
-            if (cbbTestItem.Text == "--请输入关键字--")
-            {
-                cbbTestItem.Text = null;
-
-            }
-            testItem = cbbTestItem.Text;
-            if (processLocation == "BE")
-            {
-                mesReportName = "mesreport_be";
-
-            }
-
-            
-
+           // SN不为空时，只查SN
             if (!string.IsNullOrEmpty(SN))
             {
                 faeQueryStr = string.Concat(new string[]
@@ -138,22 +71,39 @@ namespace WindowsFormsApplication1
                           "select T.Test_explain as Decription,D.Analysis_Guide as Guide from test_explanation as T LEFT JOIN debug_guide as D ON T.Analysis_ID=D.Analysis_ID ",
                          "where T.Testcode like 'QBOOT_BLANK%' limit 1"
                          });
-                multiQueryStr = faeQueryStr+";"+mesQueryStr+";"+testAndDebugQueryStr;
-                //report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
-                report =SqlHelper.GetQueryResultSet(multiQueryStr);
+                multiQueryStr = faeQueryStr + ";" + mesQueryStr + ";" + testAndDebugQueryStr;             
+                report = FaeSqlHelper.GetQueryResultSet(multiQueryStr);
                 dgvRootCauseFAE.DataSource = report.Tables[0];
                 dgvRootCauseMES.DataSource = report.Tables[1];
                 return;
             }
+
+            if (cbbProductName.Text == "--请输入产品名--")
+            {
+                cbbProductName.Text = null;
+            }
+            productName = cbbProductName.Text;
+
+            if (cbbTestItem.Text == "--请输入关键字--")
+            {
+                cbbTestItem.Text = null;
+            }
+            testItem = cbbTestItem.Text;
+
+            if (processLocation == "BE")
+            {
+                mesReportName = "mesreport_be";
+
+            }           
+
             if (string.IsNullOrEmpty(productName) && string.IsNullOrEmpty(testItem))
             {
-                MessageBox.Show("测试项为空，请重新输入");
+                MessageBox.Show("产品名和测试项均为空，请重新输入");
                 return;
             }
 
-                if (!string.IsNullOrEmpty(productName) && !string.IsNullOrEmpty(testItem))
-                 {
-                    //1.get 20 letters from left;2.get letters before '('or'['.
+            if (!string.IsNullOrEmpty(productName) && !string.IsNullOrEmpty(testItem))
+               {                   
                     faeQueryStr = string.Concat(new string[]
                        {
                           "select Product,Test_code,Analysis_method,Root_cause,count(*) from faereport ",
@@ -206,17 +156,13 @@ namespace WindowsFormsApplication1
                 }
                 else if (!string.IsNullOrEmpty(testItem))
                 {
-                    //include the string
+                    
                     faeQueryStr = "select Product,Test_code,Analysis_method,Root_cause,count(*) from faereport "
                              + "where Test_code like \""
                              + testItem
                              + "%\" "
                              + "GROUP BY Product,Test_code,Analysis_method,Root_cause ORDER by length(Analysis_method) DESC";
-                    /*mesQueryStr = "select Product,Test_code,Remark,Root_cause,count(*) from mesreport "
-                            + "where Test_code Rlike substring_index(left(\""
-                            +testItem
-                            +"\",20),'('or'[',1)  "
-                            + "GROUP BY Product,Test_code,Remark,Root_cause ORDER by count(*) DESC";*/
+                   
                     mesQueryStr = "SELECT T1.Product,T1.Test_code,T1.Root_cause,T1.co as Total,case when T2.totalCo=0 then CONCAT(0.00,'%') else concat(ROUND(T1.co/T2.totalCo*100,1),'','%') end as Percent from "
                         + "(SELECT Product,Test_code,Root_cause,COUNT(*) AS co from "+ mesReportName
                         + " where Test_code like \""
@@ -264,11 +210,7 @@ namespace WindowsFormsApplication1
                           "select T.Test_explain as Decription,D.Analysis_Guide as Guide from test_explanation as T LEFT JOIN debug_guide as D ON T.Analysis_ID=D.Analysis_ID ",
                          "where T.Testcode like 'QBOOT_BLANK%' limit 1"
                        });
-                    /*mesQueryStr = "select Product,Test_code,Root_cause,count(*) from mesreport "
-                         + "where product Rlike \""
-                         + productName
-                         + "\" "
-                         + "GROUP BY Product,Test_code,Root_cause ORDER by count(*) DESC";*/
+                   
                     mesQueryStr = "SELECT T1.Product,T1.Test_code,T1.Root_cause,T1.co as Total,case when T2.totalCo=0 then CONCAT(0.00,'%') else concat(ROUND(T1.co/T2.totalCo*100,1),'','%') end as Percent from "
                                            + "(SELECT Product,Test_code,Root_cause,COUNT(*) AS co from "+ mesReportName
                                             + " where product like \""
@@ -294,15 +236,8 @@ namespace WindowsFormsApplication1
                                               + "group by Product,Test_code)as T2 WHERE T1.Product=T2.Product and T1.Test_code=T2.Test_code order by T1.co desc";
                 }
 
-              
-
                 multiQueryStr = faeQueryStr+";"+mesQueryStr+";"+testAndDebugQueryStr;
-
-                // dgvRootCauseFAE.DataSource = null;
-                // dgvRootCauseMES.DataSource = null;
-                //report = new DataSet();
-
-                //report = GetMultiQueryResultSet(faeQueryStr, mesQueryStr, testAndDebugQueryStr);
+             
                 report = SqlHelper.GetQueryResultSet(multiQueryStr);
                 dgvRootCauseFAE.DataSource = report.Tables[0];
                 dgvRootCauseMES.DataSource = report.Tables[1];
@@ -317,32 +252,24 @@ namespace WindowsFormsApplication1
                     testDescription.Text = null;
                     analysisThink.Text = null;
                 }
+
             //call pie chart function
                 DataTable dt = report.Tables[1];
-                //List<string> xData = new List<string>();
-                //List<double> yData = new List<double>();
-                /*for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    xData.Add(dt.Rows[i][2].ToString());
-                    yData.Add(dt.Rows[i][3].ToString());
-                }*/
+           
 
                 chart1.Series[0]["PieLabelStyle"]="Outside";
                 chart1.Series[0]["PieLineColor"]="Black";
-                //chart1.Series[0].Points.DataBindXY(xData,yData);
+                
                
                 chart1.DataSource = dt;
                 chart1.Series[0].YValueMembers = "Total";
                 chart1.Series[0].XValueMember = "Root_cause";
-                //chart1.Series[0].XValueType = ChartValueTpype.String();
+               
                 chart1.Series[0].Label = "#PERCENT{P}";
 
                 chart1.Series[0].LegendText = "#VALX";
               
-                chart1.DataBind();
-                //DataView dv = new DataView(dt);
-        
-           
+                chart1.DataBind();                                 
 
 
         //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
@@ -438,11 +365,7 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void productName_SelectedIndexChanged(object sender, EventArgs e)
           {
-            //SqlHelper mySqlHelper = new SqlHelper();
-
-              //show troubleshooting catalog list by seleted product;
-              //need study case clause
-              //get source from database
+           
             string queryString3=null;
               DataSet myDataSet=new DataSet();
               
@@ -458,7 +381,7 @@ namespace WindowsFormsApplication1
                   defectCatalog.ValueMember = "Debug_doc";
 
                   defectCatalog.DataSource = myDataSet.Tables[0].DefaultView;
-                  //defectCatalog.DataSource = myDataSet.Tables["USER4"].DefaultView;
+                 
                   defectCatalog.SelectedIndex = 0;
               }
               catch (ArgumentException ex)
@@ -570,10 +493,17 @@ namespace WindowsFormsApplication1
         {
             FormLogin flogin = new FormLogin();
             flogin.Show();
+            this.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FAEentrance recordInput = new FAEentrance();
+            recordInput.Show();
             this.Visible = false;
         }
 
-       
+
 
         /*private void 帮助F1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -581,9 +511,9 @@ namespace WindowsFormsApplication1
             helpProvider1.HelpNamespace = filepath;
         }*/
 
-        
 
-        
+
+
     }
 }
 

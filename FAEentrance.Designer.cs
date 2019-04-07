@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.serialNumber = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.failureDebugDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.debugNotes = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,9 +55,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.closeDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.improveStatus = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.improveNode = new System.Windows.Forms.ComboBox();
+            this.failureDebugDate = new System.Windows.Forms.DateTimePicker();
+            this.recordUpload = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.AnaID = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.remark = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.failueImage)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -189,16 +193,15 @@
             "ZAP",
             "ZAP小板",
             "ZIPPO"});
-            this.familyName.Location = new System.Drawing.Point(47, 14);
+            this.familyName.Location = new System.Drawing.Point(67, 14);
             this.familyName.Name = "familyName";
-            this.familyName.Size = new System.Drawing.Size(115, 20);
+            this.familyName.Size = new System.Drawing.Size(132, 20);
             this.familyName.TabIndex = 1;
-            this.familyName.Text = "--产品名--";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 14);
+            this.label3.Location = new System.Drawing.Point(212, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 4;
@@ -209,9 +212,8 @@
             this.testStationName.FormattingEnabled = true;
             this.testStationName.Location = new System.Drawing.Point(253, 11);
             this.testStationName.Name = "testStationName";
-            this.testStationName.Size = new System.Drawing.Size(123, 20);
+            this.testStationName.Size = new System.Drawing.Size(130, 20);
             this.testStationName.TabIndex = 5;
-            this.testStationName.Text = "--测试站名称--";
             // 
             // label4
             // 
@@ -225,68 +227,58 @@
             // serialNumber
             // 
             this.serialNumber.FormattingEnabled = true;
-            this.serialNumber.Location = new System.Drawing.Point(35, 42);
+            this.serialNumber.Location = new System.Drawing.Point(67, 42);
             this.serialNumber.Name = "serialNumber";
-            this.serialNumber.Size = new System.Drawing.Size(153, 20);
+            this.serialNumber.Size = new System.Drawing.Size(316, 20);
             this.serialNumber.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(194, 116);
+            this.label5.Location = new System.Drawing.Point(194, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 12);
             this.label5.TabIndex = 8;
             this.label5.Text = "分析日期*";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // failureDebugDate
-            // 
-            this.failureDebugDate.Location = new System.Drawing.Point(253, 110);
-            this.failureDebugDate.Name = "failureDebugDate";
-            this.failureDebugDate.Size = new System.Drawing.Size(123, 21);
-            this.failureDebugDate.TabIndex = 9;
-            this.failureDebugDate.Value = new System.DateTime(2018, 12, 19, 19, 16, 7, 0);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 145);
+            this.label6.Location = new System.Drawing.Point(6, 159);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 12);
             this.label6.TabIndex = 10;
-            this.label6.Text = "分析步骤*";
+            this.label6.Text = "分析过程*";
             // 
             // debugNotes
             // 
-            this.debugNotes.Location = new System.Drawing.Point(8, 160);
+            this.debugNotes.Location = new System.Drawing.Point(8, 174);
             this.debugNotes.Name = "debugNotes";
-            this.debugNotes.Size = new System.Drawing.Size(368, 111);
+            this.debugNotes.Size = new System.Drawing.Size(375, 97);
             this.debugNotes.TabIndex = 11;
             this.debugNotes.Text = "";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 79);
+            this.label7.Location = new System.Drawing.Point(6, 78);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 12);
+            this.label7.Size = new System.Drawing.Size(47, 12);
             this.label7.TabIndex = 12;
-            this.label7.Text = "问题描述*";
+            this.label7.Text = "测试项*";
             // 
             // failureCode
             // 
             this.failureCode.FormattingEnabled = true;
-            this.failureCode.Location = new System.Drawing.Point(71, 76);
+            this.failureCode.Location = new System.Drawing.Point(67, 71);
             this.failureCode.Name = "failureCode";
-            this.failureCode.Size = new System.Drawing.Size(305, 20);
+            this.failureCode.Size = new System.Drawing.Size(316, 20);
             this.failureCode.TabIndex = 13;
-            this.failureCode.Text = "--测试项名称--";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 55);
+            this.label8.Location = new System.Drawing.Point(16, 93);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 14;
@@ -295,7 +287,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 155);
+            this.label9.Location = new System.Drawing.Point(16, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 16;
@@ -303,16 +295,16 @@
             // 
             // failueImage
             // 
-            this.failueImage.Location = new System.Drawing.Point(18, 170);
+            this.failueImage.Location = new System.Drawing.Point(18, 189);
             this.failueImage.Name = "failueImage";
-            this.failueImage.Size = new System.Drawing.Size(121, 101);
+            this.failueImage.Size = new System.Drawing.Size(121, 82);
             this.failueImage.TabIndex = 17;
             this.failueImage.TabStop = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 116);
+            this.label10.Location = new System.Drawing.Point(6, 110);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 12);
             this.label10.TabIndex = 18;
@@ -321,7 +313,7 @@
             // failureRootCause
             // 
             this.failureRootCause.FormattingEnabled = true;
-            this.failureRootCause.Location = new System.Drawing.Point(65, 113);
+            this.failureRootCause.Location = new System.Drawing.Point(71, 105);
             this.failureRootCause.Name = "failureRootCause";
             this.failureRootCause.Size = new System.Drawing.Size(121, 20);
             this.failureRootCause.TabIndex = 19;
@@ -329,7 +321,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 17);
+            this.label11.Location = new System.Drawing.Point(16, 55);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 20;
@@ -338,7 +330,7 @@
             // ownerShip
             // 
             this.ownerShip.FormattingEnabled = true;
-            this.ownerShip.Location = new System.Drawing.Point(18, 32);
+            this.ownerShip.Location = new System.Drawing.Point(18, 70);
             this.ownerShip.Name = "ownerShip";
             this.ownerShip.Size = new System.Drawing.Size(121, 20);
             this.ownerShip.TabIndex = 21;
@@ -356,14 +348,14 @@
             // 
             this.ownerCommend.Location = new System.Drawing.Point(164, 24);
             this.ownerCommend.Name = "ownerCommend";
-            this.ownerCommend.Size = new System.Drawing.Size(269, 117);
+            this.ownerCommend.Size = new System.Drawing.Size(277, 70);
             this.ownerCommend.TabIndex = 23;
             this.ownerCommend.Text = "";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(162, 155);
+            this.label13.Location = new System.Drawing.Point(162, 103);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 24;
@@ -371,33 +363,33 @@
             // 
             // improveAction
             // 
-            this.improveAction.Location = new System.Drawing.Point(164, 170);
+            this.improveAction.Location = new System.Drawing.Point(164, 118);
             this.improveAction.Name = "improveAction";
-            this.improveAction.Size = new System.Drawing.Size(269, 101);
+            this.improveAction.Size = new System.Drawing.Size(277, 64);
             this.improveAction.TabIndex = 25;
             this.improveAction.Text = "";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(213, 45);
+            this.label14.Location = new System.Drawing.Point(16, 17);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 12);
+            this.label14.Size = new System.Drawing.Size(53, 12);
             this.label14.TabIndex = 26;
-            this.label14.Text = "问题类型*";
+            this.label14.Text = "问题类型";
             // 
             // failueCatalog
             // 
             this.failueCatalog.FormattingEnabled = true;
-            this.failueCatalog.Location = new System.Drawing.Point(278, 42);
+            this.failueCatalog.Location = new System.Drawing.Point(18, 32);
             this.failueCatalog.Name = "failueCatalog";
-            this.failueCatalog.Size = new System.Drawing.Size(98, 20);
+            this.failueCatalog.Size = new System.Drawing.Size(121, 20);
             this.failueCatalog.TabIndex = 27;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 103);
+            this.label15.Location = new System.Drawing.Point(16, 135);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 28;
@@ -405,14 +397,18 @@
             // 
             // closeDate
             // 
-            this.closeDate.Location = new System.Drawing.Point(18, 124);
+            this.closeDate.Location = new System.Drawing.Point(18, 150);
             this.closeDate.Name = "closeDate";
             this.closeDate.Size = new System.Drawing.Size(105, 21);
             this.closeDate.TabIndex = 29;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.improveNode);
+            this.groupBox1.Controls.Add(this.remark);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.failueCatalog);
+            this.groupBox1.Controls.Add(this.improveStatus);
             this.groupBox1.Controls.Add(this.closeDate);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.failueImage);
@@ -431,10 +427,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "可选项";
             // 
+            // improveStatus
+            // 
+            this.improveStatus.FormattingEnabled = true;
+            this.improveStatus.Location = new System.Drawing.Point(18, 108);
+            this.improveStatus.Name = "improveStatus";
+            this.improveStatus.Size = new System.Drawing.Size(121, 20);
+            this.improveStatus.TabIndex = 30;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.failueCatalog);
-            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.AnaID);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.failureRootCause);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.failureCode);
@@ -456,29 +460,64 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "必填项";
             // 
-            // button1
+            // failureDebugDate
             // 
-            this.button1.Location = new System.Drawing.Point(392, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "提交";
-            this.button1.UseVisualStyleBackColor = true;
+            this.failureDebugDate.Location = new System.Drawing.Point(259, 105);
+            this.failureDebugDate.Name = "failureDebugDate";
+            this.failureDebugDate.Size = new System.Drawing.Size(124, 21);
+            this.failureDebugDate.TabIndex = 9;
+            this.failureDebugDate.Value = new System.DateTime(2018, 12, 19, 19, 16, 7, 0);
             // 
-            // improveNode
+            // recordUpload
             // 
-            this.improveNode.FormattingEnabled = true;
-            this.improveNode.Location = new System.Drawing.Point(17, 74);
-            this.improveNode.Name = "improveNode";
-            this.improveNode.Size = new System.Drawing.Size(121, 20);
-            this.improveNode.TabIndex = 30;
+            this.recordUpload.Location = new System.Drawing.Point(400, 304);
+            this.recordUpload.Name = "recordUpload";
+            this.recordUpload.Size = new System.Drawing.Size(66, 23);
+            this.recordUpload.TabIndex = 32;
+            this.recordUpload.Text = "提交";
+            this.recordUpload.UseVisualStyleBackColor = true;
+            this.recordUpload.Click += new System.EventHandler(this.recordUpload_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "工号*";
+            // 
+            // AnaID
+            // 
+            this.AnaID.FormattingEnabled = true;
+            this.AnaID.Location = new System.Drawing.Point(67, 137);
+            this.AnaID.Name = "AnaID";
+            this.AnaID.Size = new System.Drawing.Size(147, 20);
+            this.AnaID.TabIndex = 29;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(162, 189);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 12);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "备注";
+            // 
+            // remark
+            // 
+            this.remark.Location = new System.Drawing.Point(164, 204);
+            this.remark.Name = "remark";
+            this.remark.Size = new System.Drawing.Size(277, 67);
+            this.remark.TabIndex = 32;
+            this.remark.Text = "";
             // 
             // FAEentrance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 334);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.recordUpload);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FAEentrance";
@@ -501,7 +540,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox serialNumber;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker failureDebugDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox debugNotes;
         private System.Windows.Forms.Label label7;
@@ -523,7 +561,12 @@
         private System.Windows.Forms.DateTimePicker closeDate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox improveNode;
+        private System.Windows.Forms.Button recordUpload;
+        private System.Windows.Forms.ComboBox improveStatus;
+        private System.Windows.Forms.DateTimePicker failureDebugDate;
+        private System.Windows.Forms.ComboBox AnaID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox remark;
+        private System.Windows.Forms.Label label16;
     }
 }

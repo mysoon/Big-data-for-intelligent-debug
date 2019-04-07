@@ -18,7 +18,7 @@ using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
-    class SqlHelper
+    class FaeSqlHelper
     {
         //public static string MyCon = "Server=127.0.0.1;database=fae_two;uid=root;pwd=123456;SslMode=none;";
         /// <summary>
@@ -91,7 +91,7 @@ namespace WindowsFormsApplication1
             //string connectionString = "Server=127.0.0.1;User ID=root;Password=;Database=fae_weekly;CharSet=utf8;";
 
             MySqlConnection myConnection;
-            myConnection = SqlHelper.myGetConnection();
+            myConnection = FaeSqlHelper.myGetConnection();
 
             DataSet myDataSet = new DataSet();
 
@@ -130,8 +130,9 @@ namespace WindowsFormsApplication1
             finally
             {
                 myConnection.Close();
-
+                
             }
+            //myDataAdapter.dispose();
             return myDataSet;
         }
 
