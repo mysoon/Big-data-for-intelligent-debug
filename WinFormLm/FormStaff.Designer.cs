@@ -66,20 +66,9 @@ namespace WinFormLm
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtEmployee_id = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgvStatistics = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dTP1 = new System.Windows.Forms.DateTimePicker();
-            this.dTP2 = new System.Windows.Forms.DateTimePicker();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.lblSNBegin = new System.Windows.Forms.Label();
-            this.lblSNEnd = new System.Windows.Forms.Label();
+            this.分析录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblMix = new System.Windows.Forms.Label();
+            this.lblExit = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtOldPwd = new System.Windows.Forms.TextBox();
             this.txtReNewPwd = new System.Windows.Forms.TextBox();
@@ -90,6 +79,21 @@ namespace WinFormLm
             this.lblNewPwd = new System.Windows.Forms.Label();
             this.lblAccount = new System.Windows.Forms.Label();
             this.btnModifyPwd = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtEmployee_id = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvStatistics = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dTP1 = new System.Windows.Forms.DateTimePicker();
+            this.dTP2 = new System.Windows.Forms.DateTimePicker();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.lblSNBegin = new System.Windows.Forms.Label();
+            this.lblSNEnd = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.rdoPublic = new System.Windows.Forms.RadioButton();
             this.rdoPersonal = new System.Windows.Forms.RadioButton();
@@ -99,6 +103,7 @@ namespace WinFormLm
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.lblReport = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
@@ -107,12 +112,10 @@ namespace WinFormLm
             this.lblcheckOut = new System.Windows.Forms.Label();
             this.lblcheckIn = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.lblMix = new System.Windows.Forms.Label();
-            this.lblExit = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStatistics)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -131,11 +134,12 @@ namespace WinFormLm
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.帮助ToolStripMenuItem});
+            this.帮助ToolStripMenuItem,
+            this.分析录入ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(828, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -155,168 +159,40 @@ namespace WinFormLm
             this.helpToolStripMenuItem.Text = "查看帮助(H)";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // tabPage3
+            // 分析录入ToolStripMenuItem
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage3.Controls.Add(this.txtEmployee_id);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.dgvStatistics);
-            this.tabPage3.Controls.Add(this.dTP1);
-            this.tabPage3.Controls.Add(this.dTP2);
-            this.tabPage3.Controls.Add(this.btnQuery);
-            this.tabPage3.Controls.Add(this.lblSNBegin);
-            this.tabPage3.Controls.Add(this.lblSNEnd);
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(778, 599);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "黑色异常查询";
+            this.分析录入ToolStripMenuItem.Name = "分析录入ToolStripMenuItem";
+            this.分析录入ToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
+            this.分析录入ToolStripMenuItem.Text = "分析录入";
+            this.分析录入ToolStripMenuItem.Click += new System.EventHandler(this.分析录入ToolStripMenuItem_Click);
             // 
-            // txtEmployee_id
+            // lblMix
             // 
-            this.txtEmployee_id.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEmployee_id.Location = new System.Drawing.Point(523, 58);
-            this.txtEmployee_id.MaxLength = 8;
-            this.txtEmployee_id.Name = "txtEmployee_id";
-            this.txtEmployee_id.Size = new System.Drawing.Size(160, 22);
-            this.txtEmployee_id.TabIndex = 13;
-            this.txtEmployee_id.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmployee_id_KeyDown);
+            this.lblMix.AutoSize = true;
+            this.lblMix.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMix.ForeColor = System.Drawing.Color.Transparent;
+            this.lblMix.Location = new System.Drawing.Point(747, 9);
+            this.lblMix.Name = "lblMix";
+            this.lblMix.Size = new System.Drawing.Size(25, 16);
+            this.lblMix.TabIndex = 3;
+            this.lblMix.Text = "—";
+            this.lblMix.Click += new System.EventHandler(this.lblMix_Click);
+            this.lblMix.MouseLeave += new System.EventHandler(this.lblMix_MouseLeave);
+            this.lblMix.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblMix_MouseMove);
             // 
-            // label4
+            // lblExit
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "按工号查询：";
-            // 
-            // dgvStatistics
-            // 
-            this.dgvStatistics.AllowUserToAddRows = false;
-            this.dgvStatistics.AllowUserToDeleteRows = false;
-            this.dgvStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStatistics.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvStatistics.BackgroundColor = System.Drawing.Color.White;
-            this.dgvStatistics.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStatistics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dgvStatistics.GridColor = System.Drawing.Color.Black;
-            this.dgvStatistics.Location = new System.Drawing.Point(29, 101);
-            this.dgvStatistics.Name = "dgvStatistics";
-            this.dgvStatistics.ReadOnly = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.dgvStatistics.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvStatistics.RowTemplate.Height = 23;
-            this.dgvStatistics.Size = new System.Drawing.Size(716, 471);
-            this.dgvStatistics.TabIndex = 7;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "SN";
-            this.Column1.FillWeight = 90F;
-            this.Column1.HeaderText = "SN";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "SNCheckIn";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column2.FillWeight = 70F;
-            this.Column2.HeaderText = "SNCheckIn";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "SNCheckOut";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column3.FillWeight = 70F;
-            this.Column3.HeaderText = "SNCheckOut";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.DataPropertyName = "Minute";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column4.FillWeight = 28F;
-            this.Column4.HeaderText = "Minute";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.DataPropertyName = "employee_id";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column5.FillWeight = 50F;
-            this.Column5.HeaderText = "employee_id";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // dTP1
-            // 
-            this.dTP1.CustomFormat = "yyyy/MM/dd HH:mm";
-            this.dTP1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dTP1.Location = new System.Drawing.Point(109, 18);
-            this.dTP1.Name = "dTP1";
-            this.dTP1.Size = new System.Drawing.Size(196, 22);
-            this.dTP1.TabIndex = 6;
-            // 
-            // dTP2
-            // 
-            this.dTP2.CustomFormat = "yyyy/MM/dd HH:mm";
-            this.dTP2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dTP2.Location = new System.Drawing.Point(109, 55);
-            this.dTP2.Name = "dTP2";
-            this.dTP2.Size = new System.Drawing.Size(196, 22);
-            this.dTP2.TabIndex = 5;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnQuery.Image")));
-            this.btnQuery.Location = new System.Drawing.Point(702, 60);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(43, 23);
-            this.btnQuery.TabIndex = 4;
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // lblSNBegin
-            // 
-            this.lblSNBegin.AutoSize = true;
-            this.lblSNBegin.Location = new System.Drawing.Point(26, 21);
-            this.lblSNBegin.Name = "lblSNBegin";
-            this.lblSNBegin.Size = new System.Drawing.Size(77, 13);
-            this.lblSNBegin.TabIndex = 1;
-            this.lblSNBegin.Text = "开始时间：";
-            // 
-            // lblSNEnd
-            // 
-            this.lblSNEnd.AutoSize = true;
-            this.lblSNEnd.Location = new System.Drawing.Point(26, 58);
-            this.lblSNEnd.Name = "lblSNEnd";
-            this.lblSNEnd.Size = new System.Drawing.Size(77, 13);
-            this.lblSNEnd.TabIndex = 0;
-            this.lblSNEnd.Text = "结束时间：";
+            this.lblExit.AutoSize = true;
+            this.lblExit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblExit.ForeColor = System.Drawing.Color.Transparent;
+            this.lblExit.Location = new System.Drawing.Point(791, 9);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(25, 16);
+            this.lblExit.TabIndex = 4;
+            this.lblExit.Text = "×";
+            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
+            this.lblExit.MouseLeave += new System.EventHandler(this.lblExit_MouseLeave);
+            this.lblExit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblExit_MouseMove);
             // 
             // tabPage2
             // 
@@ -335,7 +211,7 @@ namespace WinFormLm
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(778, 599);
+            this.tabPage2.Size = new System.Drawing.Size(819, 599);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "修改密码";
             // 
@@ -422,6 +298,178 @@ namespace WinFormLm
             this.btnModifyPwd.UseVisualStyleBackColor = true;
             this.btnModifyPwd.Click += new System.EventHandler(this.btnModifyPwd_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage3.Controls.Add(this.txtEmployee_id);
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.dgvStatistics);
+            this.tabPage3.Controls.Add(this.dTP1);
+            this.tabPage3.Controls.Add(this.dTP2);
+            this.tabPage3.Controls.Add(this.btnQuery);
+            this.tabPage3.Controls.Add(this.lblSNBegin);
+            this.tabPage3.Controls.Add(this.lblSNEnd);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(819, 599);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "黑色异常查询";
+            // 
+            // txtEmployee_id
+            // 
+            this.txtEmployee_id.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEmployee_id.Location = new System.Drawing.Point(580, 59);
+            this.txtEmployee_id.MaxLength = 8;
+            this.txtEmployee_id.Name = "txtEmployee_id";
+            this.txtEmployee_id.Size = new System.Drawing.Size(160, 22);
+            this.txtEmployee_id.TabIndex = 13;
+            this.txtEmployee_id.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmployee_id_KeyDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(483, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "按工号查询：";
+            // 
+            // dgvStatistics
+            // 
+            this.dgvStatistics.AllowUserToAddRows = false;
+            this.dgvStatistics.AllowUserToDeleteRows = false;
+            this.dgvStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStatistics.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvStatistics.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStatistics.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStatistics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column12});
+            this.dgvStatistics.GridColor = System.Drawing.Color.Black;
+            this.dgvStatistics.Location = new System.Drawing.Point(29, 101);
+            this.dgvStatistics.Name = "dgvStatistics";
+            this.dgvStatistics.ReadOnly = true;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dgvStatistics.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvStatistics.RowTemplate.Height = 23;
+            this.dgvStatistics.Size = new System.Drawing.Size(770, 471);
+            this.dgvStatistics.TabIndex = 7;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "SN";
+            this.Column1.FillWeight = 70F;
+            this.Column1.HeaderText = "SN";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "SNCheckIn";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column2.FillWeight = 78F;
+            this.Column2.HeaderText = "SN分析开始时间";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "SNCheckOut";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.FillWeight = 78F;
+            this.Column3.HeaderText = "SN分析结束时间";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "Minute";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column4.FillWeight = 45F;
+            this.Column4.HeaderText = "用时/分";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.DataPropertyName = "employee_id";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column5.FillWeight = 40F;
+            this.Column5.HeaderText = "工号";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Ana_name";
+            this.Column12.FillWeight = 40F;
+            this.Column12.HeaderText = "分析人";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // dTP1
+            // 
+            this.dTP1.CustomFormat = "yyyy/MM/dd HH:mm";
+            this.dTP1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dTP1.Location = new System.Drawing.Point(109, 18);
+            this.dTP1.Name = "dTP1";
+            this.dTP1.Size = new System.Drawing.Size(196, 22);
+            this.dTP1.TabIndex = 6;
+            // 
+            // dTP2
+            // 
+            this.dTP2.CustomFormat = "yyyy/MM/dd HH:mm";
+            this.dTP2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dTP2.Location = new System.Drawing.Point(109, 55);
+            this.dTP2.Name = "dTP2";
+            this.dTP2.Size = new System.Drawing.Size(196, 22);
+            this.dTP2.TabIndex = 5;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnQuery.Image")));
+            this.btnQuery.Location = new System.Drawing.Point(756, 58);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(43, 23);
+            this.btnQuery.TabIndex = 4;
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // lblSNBegin
+            // 
+            this.lblSNBegin.AutoSize = true;
+            this.lblSNBegin.Location = new System.Drawing.Point(26, 21);
+            this.lblSNBegin.Name = "lblSNBegin";
+            this.lblSNBegin.Size = new System.Drawing.Size(77, 13);
+            this.lblSNBegin.TabIndex = 1;
+            this.lblSNBegin.Text = "开始时间：";
+            // 
+            // lblSNEnd
+            // 
+            this.lblSNEnd.AutoSize = true;
+            this.lblSNEnd.Location = new System.Drawing.Point(26, 58);
+            this.lblSNEnd.Name = "lblSNEnd";
+            this.lblSNEnd.Size = new System.Drawing.Size(77, 13);
+            this.lblSNEnd.TabIndex = 0;
+            this.lblSNEnd.Text = "结束时间：";
+            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
@@ -440,14 +488,14 @@ namespace WinFormLm
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(778, 599);
+            this.tabPage1.Size = new System.Drawing.Size(819, 599);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "黑色异常录入";
             // 
             // rdoPublic
             // 
             this.rdoPublic.AutoSize = true;
-            this.rdoPublic.Location = new System.Drawing.Point(142, 129);
+            this.rdoPublic.Location = new System.Drawing.Point(142, 126);
             this.rdoPublic.Name = "rdoPublic";
             this.rdoPublic.Size = new System.Drawing.Size(97, 17);
             this.rdoPublic.TabIndex = 10;
@@ -459,7 +507,7 @@ namespace WinFormLm
             // 
             this.rdoPersonal.AutoSize = true;
             this.rdoPersonal.Checked = true;
-            this.rdoPersonal.Location = new System.Drawing.Point(39, 129);
+            this.rdoPersonal.Location = new System.Drawing.Point(39, 126);
             this.rdoPersonal.Name = "rdoPersonal";
             this.rdoPersonal.Size = new System.Drawing.Size(97, 17);
             this.rdoPersonal.TabIndex = 9;
@@ -480,7 +528,8 @@ namespace WinFormLm
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
+            this.Column9,
+            this.Column11});
             this.dgvReport.GridColor = System.Drawing.Color.White;
             this.dgvReport.Location = new System.Drawing.Point(39, 152);
             this.dgvReport.Name = "dgvReport";
@@ -490,13 +539,14 @@ namespace WinFormLm
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
             this.dgvReport.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvReport.RowTemplate.Height = 23;
-            this.dgvReport.Size = new System.Drawing.Size(690, 420);
+            this.dgvReport.Size = new System.Drawing.Size(763, 420);
             this.dgvReport.TabIndex = 8;
             // 
             // Column10
             // 
             this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column10.DataPropertyName = "SN";
+            this.Column10.FillWeight = 70F;
             this.Column10.HeaderText = "SN";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
@@ -508,7 +558,7 @@ namespace WinFormLm
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column6.FillWeight = 78F;
-            this.Column6.HeaderText = "SNCheckIn";
+            this.Column6.HeaderText = "SN分析开始时间";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
@@ -519,7 +569,7 @@ namespace WinFormLm
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column7.FillWeight = 78F;
-            this.Column7.HeaderText = "SNCheckInOut";
+            this.Column7.HeaderText = "SN分析结束时间";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
@@ -529,8 +579,8 @@ namespace WinFormLm
             this.Column8.DataPropertyName = "Minute";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column8.FillWeight = 30F;
-            this.Column8.HeaderText = "Minute";
+            this.Column8.FillWeight = 45F;
+            this.Column8.HeaderText = "用时/分";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
@@ -540,10 +590,19 @@ namespace WinFormLm
             this.Column9.DataPropertyName = "employee_id";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Column9.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column9.FillWeight = 50F;
-            this.Column9.HeaderText = "employee_id";
+            this.Column9.FillWeight = 40F;
+            this.Column9.HeaderText = "工号";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column11.DataPropertyName = "Ana_name";
+            this.Column11.FillWeight = 40F;
+            this.Column11.HeaderText = "分析人";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             // 
             // label3
             // 
@@ -569,7 +628,7 @@ namespace WinFormLm
             this.btnUpload.FlatAppearance.BorderSize = 0;
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnUpload.ForeColor = System.Drawing.Color.Red;
-            this.btnUpload.Location = new System.Drawing.Point(671, 114);
+            this.btnUpload.Location = new System.Drawing.Point(744, 111);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(58, 32);
             this.btnUpload.TabIndex = 4;
@@ -581,8 +640,8 @@ namespace WinFormLm
             // 
             this.txtCheckOut.AcceptsReturn = true;
             this.txtCheckOut.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCheckOut.Location = new System.Drawing.Point(504, 55);
-            this.txtCheckOut.MaxLength = 23;
+            this.txtCheckOut.Location = new System.Drawing.Point(577, 52);
+            this.txtCheckOut.MaxLength = 100;
             this.txtCheckOut.Name = "txtCheckOut";
             this.txtCheckOut.Size = new System.Drawing.Size(225, 22);
             this.txtCheckOut.TabIndex = 2;
@@ -594,7 +653,7 @@ namespace WinFormLm
             this.txtCheckIn.AcceptsReturn = true;
             this.txtCheckIn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCheckIn.Location = new System.Drawing.Point(129, 52);
-            this.txtCheckIn.MaxLength = 23;
+            this.txtCheckIn.MaxLength = 100;
             this.txtCheckIn.Name = "txtCheckIn";
             this.txtCheckIn.Size = new System.Drawing.Size(225, 22);
             this.txtCheckIn.TabIndex = 2;
@@ -604,7 +663,7 @@ namespace WinFormLm
             // lblcheckOut
             // 
             this.lblcheckOut.AutoSize = true;
-            this.lblcheckOut.Location = new System.Drawing.Point(403, 58);
+            this.lblcheckOut.Location = new System.Drawing.Point(476, 55);
             this.lblcheckOut.Name = "lblcheckOut";
             this.lblcheckOut.Size = new System.Drawing.Size(95, 13);
             this.lblcheckOut.TabIndex = 1;
@@ -628,43 +687,15 @@ namespace WinFormLm
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(786, 626);
+            this.tabControl1.Size = new System.Drawing.Size(827, 626);
             this.tabControl1.TabIndex = 2;
-            // 
-            // lblMix
-            // 
-            this.lblMix.AutoSize = true;
-            this.lblMix.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMix.ForeColor = System.Drawing.Color.Transparent;
-            this.lblMix.Location = new System.Drawing.Point(708, 8);
-            this.lblMix.Name = "lblMix";
-            this.lblMix.Size = new System.Drawing.Size(25, 16);
-            this.lblMix.TabIndex = 3;
-            this.lblMix.Text = "—";
-            this.lblMix.Click += new System.EventHandler(this.lblMix_Click);
-            this.lblMix.MouseLeave += new System.EventHandler(this.lblMix_MouseLeave);
-            this.lblMix.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblMix_MouseMove);
-            // 
-            // lblExit
-            // 
-            this.lblExit.AutoSize = true;
-            this.lblExit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblExit.ForeColor = System.Drawing.Color.Transparent;
-            this.lblExit.Location = new System.Drawing.Point(757, 9);
-            this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(25, 16);
-            this.lblExit.TabIndex = 4;
-            this.lblExit.Text = "×";
-            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
-            this.lblExit.MouseLeave += new System.EventHandler(this.lblExit_MouseLeave);
-            this.lblExit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblExit_MouseMove);
             // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(787, 668);
+            this.ClientSize = new System.Drawing.Size(828, 668);
             this.Controls.Add(this.lblExit);
             this.Controls.Add(this.lblMix);
             this.Controls.Add(this.tabControl1);
@@ -684,11 +715,11 @@ namespace WinFormLm
             this.Shown += new System.EventHandler(this.FormStaff_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStatistics)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
@@ -702,50 +733,53 @@ namespace WinFormLm
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox txtOldPwd;
-        private System.Windows.Forms.TextBox txtReNewPwd;
-        private System.Windows.Forms.TextBox txtNewPwd;
-        private System.Windows.Forms.TextBox txtAccount;
-        private System.Windows.Forms.Label lblOldPwd;
-        private System.Windows.Forms.Label lblReNewPwd;
-        private System.Windows.Forms.Label lblNewPwd;
-        private System.Windows.Forms.Label lblAccount;
-        private System.Windows.Forms.Button btnModifyPwd;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label lblReport;
-        private System.Windows.Forms.Button btnUpload;
-        private System.Windows.Forms.TextBox txtCheckOut;
-        private System.Windows.Forms.TextBox txtCheckIn;
-        private System.Windows.Forms.Label lblcheckOut;
-        private System.Windows.Forms.Label lblcheckIn;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Button btnQuery;
-        private System.Windows.Forms.Label lblSNBegin;
-        private System.Windows.Forms.Label lblSNEnd;
-        private System.Windows.Forms.DateTimePicker dTP1;
-        private System.Windows.Forms.DateTimePicker dTP2;
-        private System.Windows.Forms.DataGridView dgvStatistics;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtEmployee_id;
-        private System.Windows.Forms.DataGridView dgvReport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Label lblMix;
         private System.Windows.Forms.Label lblExit;
+        private ToolStripMenuItem 分析录入ToolStripMenuItem;
+        private TabPage tabPage2;
+        private TextBox txtOldPwd;
+        private TextBox txtReNewPwd;
+        private TextBox txtNewPwd;
+        private TextBox txtAccount;
+        private Label lblOldPwd;
+        private Label lblReNewPwd;
+        private Label lblNewPwd;
+        private Label lblAccount;
+        private Button btnModifyPwd;
+        private TabPage tabPage3;
+        private TextBox txtEmployee_id;
+        private Label label4;
+        private DataGridView dgvStatistics;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column12;
+        private DateTimePicker dTP1;
+        private DateTimePicker dTP2;
+        private Button btnQuery;
+        private Label lblSNBegin;
+        private Label lblSNEnd;
+        private TabPage tabPage1;
         private RadioButton rdoPublic;
         private RadioButton rdoPersonal;
+        private DataGridView dgvReport;
+        private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column11;
+        private Label label3;
+        private Label lblReport;
+        private Button btnUpload;
+        private TextBox txtCheckOut;
+        private TextBox txtCheckIn;
+        private Label lblcheckOut;
+        private Label lblcheckIn;
+        private TabControl tabControl1;
     }
 }

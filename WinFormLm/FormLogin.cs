@@ -135,7 +135,7 @@ namespace WinFormLm
 
         private void lblExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
         private void lblExit_MouseMove(object sender, MouseEventArgs e)
         {

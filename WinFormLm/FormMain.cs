@@ -205,38 +205,38 @@ namespace WinFormLm
         /// </summary>
         /// <param name="cmdString"></param>
         /// <returns></returns>
-        public int UploadTable(string cmdString)
-        {
-            int affectedLines;
-            MySqlConnection myUploadConnection = new MySqlConnection(SqlHelper.MyCon); ;
-            MySqlCommand mySqlCommandUpload = new MySqlCommand(cmdString, myUploadConnection);
-            try
-            {
-                myUploadConnection.Open();
-                affectedLines = mySqlCommandUpload.ExecuteNonQuery();
-                return affectedLines;
-                //return err or warning info...
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
-                        break;
-                    case 1045:
-                        MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
-                        break;
-                }
+        //public int UploadTable(string cmdString)
+        //{
+        //    int affectedLines;
+        //    MySqlConnection myUploadConnection = SqlHelper.myGetConnection();
+        //    MySqlCommand mySqlCommandUpload = new MySqlCommand(cmdString, myUploadConnection);
+        //    try
+        //    {
+        //        myUploadConnection.Open();
+        //        affectedLines = mySqlCommandUpload.ExecuteNonQuery();
+        //        return affectedLines;
+        //        //return err or warning info...
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        switch (ex.Number)
+        //        {
+        //            case 0:
+        //                MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
+        //                break;
+        //            case 1045:
+        //                MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
+        //                break;
+        //        }
 
-            }
-            finally
-            {
-                myUploadConnection.Close();
+        //    }
+        //    finally
+        //    {
+        //        myUploadConnection.Close();
 
-            }
-            return 0;
-        }
+        //    }
+        //    return 0;
+        //}
 
         /// <summary>
         /// 上传csv文件
@@ -267,7 +267,7 @@ namespace WinFormLm
             //MessageBox.Show(upLoadCommandString);
             if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(tableNameComboBox.Text))
             {
-                result = UploadTable(upLoadCommandString);
+                //result = UploadTable(upLoadCommandString);
             }
             else
             {

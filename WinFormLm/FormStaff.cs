@@ -10,6 +10,8 @@ using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
+using WindowsFormsApplication1;
 
 namespace WinFormLm
 {
@@ -34,6 +36,7 @@ namespace WinFormLm
         {
             //修改密码界面账号显示
             txtAccount.Text = employee_id;
+
             rdoPersonal_Click(null,null);
         }
 
@@ -194,6 +197,7 @@ namespace WinFormLm
                     //MessageBox.Show("表格中有SNCheckOut为空的黑色异常，已终止该部分上传！");
                     continue;
                 }
+                
                 black.SN = dgvReport.Rows[i].Cells[0].Value.ToString();
                 black.SNCheckIn = dgvReport.Rows[i].Cells[1].Value.ToString();
                 black.SNCheckOut = dgvReport.Rows[i].Cells[2].Value.ToString();
@@ -222,11 +226,11 @@ namespace WinFormLm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rdoPersonal_Click(object sender, EventArgs e)
-        {
-            string sql = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,employee_id from cktimeinfo where employee_id='" + employee_id + "'";
-            dgvReport.DataSource = SqlHelper.GetList(sql);
-        }
+        //private void rdoPersonal_Click(object sender, EventArgs e)
+        //{
+        //    string sql = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,employee_id from cktimeinfo where employee_id='" + employee_id + "'";
+        //    dgvReport.DataSource = SqlHelper.GetList(sql);
+        //}
 
 
       /// <summary>
@@ -234,11 +238,11 @@ namespace WinFormLm
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
-        private void rdoPublic_Click(object sender, EventArgs e)
-        {
-            string sql = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,employee_id from cktimeinfo";
-            dgvReport.DataSource = SqlHelper.GetList(sql);
-        }
+        //private void rdoPublic_Click(object sender, EventArgs e)
+        //{
+        //    string sql = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,employee_id from cktimeinfo where SNCheckOut='0000/00/00 00:00:00'";
+        //    dgvReport.DataSource = SqlHelper.GetList(sql);
+        //}
 
 
         /// <summary>
@@ -257,11 +261,11 @@ namespace WinFormLm
 
                 if (rdoPersonal.Checked == true)
                 {
-                    rdoPersonal_Click(null, null);
+                    rdoPersonal_Click(null,null);
                 }
-                else if (rdoPublic.Checked == true)
+                else if(rdoPublic.Checked==true) 
                 {
-                    rdoPublic_Click(null, null);
+                    rdoPublic_Click(null,null);
                 }
                 txtCheckIn.Focus();
                 return;
@@ -288,6 +292,20 @@ namespace WinFormLm
             {
                 if (txtCheckIn.Text.Trim() != "")
                 {
+                    string txtText = txtCheckIn.Text;
+                    string regular1 = @"^[A-Za-z0-9]{10}$";
+                    string regular2 = @"^[A-Za-z0-9]{23}$";
+                    bool a = Regex.IsMatch(txtText, regular2);
+                    bool b=Regex.IsMatch(txtText,regular1);
+                    if (b==false && a==false) 
+                    {
+                        MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
+                        txtCheckIn.Text = string.Empty;
+                        return;
+                    }
+           
+
+
                     black_unusual black = new black_unusual();
                     black.SN = txtCheckIn.Text.Trim();
                     string sqlBlack = "select*from black_unusual where SN='" + black.SN + "'";
@@ -347,8 +365,6 @@ namespace WinFormLm
                     return;
                 }
             }
-            
-
 
         }
 
@@ -363,6 +379,17 @@ namespace WinFormLm
             {
                 if (txtCheckOut.Text.Trim() != "")
                 {
+                    string txtText = txtCheckOut.Text;
+                    string regular1 = @"^[A-Za-z0-9]{10}$";
+                    string regular2 = @"^[A-Za-z0-9]{23}$";
+                    bool a = Regex.IsMatch(txtText, regular2);
+                    bool b = Regex.IsMatch(txtText, regular1);
+                    if (b == false && a == false)
+                    {
+                        MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
+                        txtCheckOut.Text = string.Empty;
+                        return;
+                    }
                     string sqlCk = "select*from cktimeinfo where SN='" + txtCheckOut.Text.Trim() + "'";
                     if (SqlHelper.GetList(sqlCk).Rows.Count > 0)
                     {
@@ -378,7 +405,6 @@ namespace WinFormLm
                             {
                                 rdoPublic_Click(null, null);
                             }
-                           
                         }
                         else
                         {
@@ -387,14 +413,14 @@ namespace WinFormLm
                             if (dr == DialogResult.OK)
                             {
                                 UpdateSNcheckOut();
-                            if (rdoPersonal.Checked == true)
-                            {
-                                rdoPersonal_Click(null,null);
-                            }
-                            else if(rdoPublic.Checked==true)
-                            {
-                                rdoPublic_Click(null,null);
-                            }
+                                if (rdoPersonal.Checked == true)
+                                {
+                                    rdoPersonal_Click(null, null);
+                                }
+                                else if (rdoPublic.Checked == true)
+                                {
+                                    rdoPublic_Click(null, null);
+                                }
                             }
                         }
                        
@@ -434,7 +460,7 @@ namespace WinFormLm
                 }
                 else
                 {
-                        string sql = "select SN,SNCheckIn,SNCheckOut,Minute,employee_id from black_unusual where SNCheckIn between '"+dTP1.Text.Trim()+"' and '"+dTP2.Text.Trim()+"' and employee_id LIKE '%"+txtEmployee_id.Text.Trim()+"%'";
+                    string sql = "select SN,SNCheckIn,SNCheckOut,Minute,fae_analyzer.employee_id,fae_analyzer.Ana_name from fae_analyzer inner join black_unusual where fae_analyzer.employee_id=black_unusual.employee_id and SNCheckIn between '" + dTP1.Text.Trim() + "' and '" + dTP2.Text.Trim() + "' and fae_analyzer.employee_id LIKE '" + txtEmployee_id.Text.Trim() + "%'";
                         dgvStatistics.DataSource = SqlHelper.GetList(sql);
                 }       
         }
@@ -510,6 +536,32 @@ namespace WinFormLm
         {
             lblExit.ForeColor = Color.Transparent;
             lblExit.BackColor = Color.DarkSeaGreen;
+        }
+
+        private void 培训检验ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show(this);
+        }
+
+        private void rdoPersonal_Click(object sender, EventArgs e)
+        {
+            string sqlCK = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,fae_analyzer.employee_id,fae_analyzer.Ana_name from fae_analyzer inner join cktimeinfo where fae_analyzer.employee_id=cktimeinfo.employee_id and fae_analyzer.employee_id='"+employee_id+"'";
+            dgvReport.DataSource = SqlHelper.GetList(sqlCK);
+        }
+
+        private void rdoPublic_Click(object sender, EventArgs e)
+        {
+            string sqlCK = "select SN,SNCheckIn,SNCheckOut,timestampdiff(MINUTE,SNCheckIn,SNCheckOut)as Minute,fae_analyzer.employee_id,fae_analyzer.Ana_name from fae_analyzer inner join cktimeinfo where fae_analyzer.employee_id=cktimeinfo.employee_id";
+            dgvReport.DataSource = SqlHelper.GetList(sqlCK);
+        }
+
+        private void 分析录入ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FAEentrance recordInput = new FAEentrance();
+            recordInput.Show();
+            this.Visible = false;
         }
 
        
