@@ -262,12 +262,12 @@ namespace WinFormLm
                      "\"",
                      "' lines terminated by '",
                      "\\r\\n",
-                     "'"
+                     "';"
 				});
             //MessageBox.Show(upLoadCommandString);
             if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(tableNameComboBox.Text))
             {
-                //result = UploadTable(upLoadCommandString);
+                result = SqlHelper.update(upLoadCommandString);
             }
             else
             {

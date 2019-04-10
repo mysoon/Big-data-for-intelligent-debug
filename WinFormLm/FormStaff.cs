@@ -292,17 +292,17 @@ namespace WinFormLm
             {
                 if (txtCheckIn.Text.Trim() != "")
                 {
-                    string txtText = txtCheckIn.Text;
-                    string regular1 = @"^[A-Za-z0-9]{10}$";
-                    string regular2 = @"^[A-Za-z0-9]{23}$";
-                    bool a = Regex.IsMatch(txtText, regular2);
-                    bool b=Regex.IsMatch(txtText,regular1);
-                    if (b==false && a==false) 
-                    {
-                        MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
-                        txtCheckIn.Text = string.Empty;
-                        return;
-                    }
+                    //string txtText = txtCheckIn.Text;
+                    //string regular1 = @"^[A-Za-z0-9]{10}$";
+                    //string regular2 = @"^[A-Za-z0-9]{23}$";
+                    //bool a = Regex.IsMatch(txtText, regular2);
+                    //bool b=Regex.IsMatch(txtText,regular1);
+                    //if (b==false && a==false) 
+                    //{
+                    //    MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
+                    //    txtCheckIn.Text = string.Empty;
+                    //    return;
+                    //}
            
 
 
@@ -379,17 +379,17 @@ namespace WinFormLm
             {
                 if (txtCheckOut.Text.Trim() != "")
                 {
-                    string txtText = txtCheckOut.Text;
-                    string regular1 = @"^[A-Za-z0-9]{10}$";
-                    string regular2 = @"^[A-Za-z0-9]{23}$";
-                    bool a = Regex.IsMatch(txtText, regular2);
-                    bool b = Regex.IsMatch(txtText, regular1);
-                    if (b == false && a == false)
-                    {
-                        MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
-                        txtCheckOut.Text = string.Empty;
-                        return;
-                    }
+                    //string txtText = txtCheckOut.Text;
+                    //string regular1 = @"^[A-Za-z0-9]{10}$";
+                    //string regular2 = @"^[A-Za-z0-9]{23}$";
+                    //bool a = Regex.IsMatch(txtText, regular2);
+                    //bool b = Regex.IsMatch(txtText, regular1);
+                    //if (b == false && a == false)
+                    //{
+                    //    MessageBox.Show("格式错误!请输入10位或者23位的字母数字组合！");
+                    //    txtCheckOut.Text = string.Empty;
+                    //    return;
+                    //}
                     string sqlCk = "select*from cktimeinfo where SN='" + txtCheckOut.Text.Trim() + "'";
                     if (SqlHelper.GetList(sqlCk).Rows.Count > 0)
                     {

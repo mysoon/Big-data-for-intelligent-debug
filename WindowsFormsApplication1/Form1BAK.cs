@@ -273,7 +273,7 @@ namespace WindowsFormsApplication1
 
 
         //--------------------------------------------------统计按钮点击次数，并记录相关信息----------------------------------------------------------------------------
-           //Modify();
+           Modify();
         }
 
         private bool Modify()
@@ -305,50 +305,7 @@ namespace WindowsFormsApplication1
             return i > 0;
         }
 
-        
-
-       
-        ///// <summary>
-        ///// 上传缺陷分析报表
-        ///// </summary>
-        ///// <param name="cmdString"></param>
-        ///// <returns></returns>
-        //public int UploadTable(string cmdString)
-        //{
-        //    int affectedLines;
-        //    MySqlConnection myUploadConnection = SqlHelper.myGetConnection();
-        //    MySqlCommand mySqlCommandUpload = new MySqlCommand(cmdString, myUploadConnection);
-        //    try
-        //    {
-        //        myUploadConnection.Open();
-        //        affectedLines=mySqlCommandUpload.ExecuteNonQuery();
-        //        return affectedLines;
-        //        //return err or warning info...
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        switch (ex.Number)
-        //        {
-        //            case 0:
-        //                MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
-        //                break;
-        //            case 1045:
-        //                MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
-        //                break;
-        //        }
-                
-        //    }
-        //    finally
-        //    {
-        //        myUploadConnection.Close();
-                
-        //    }
-        //    return 0;
-        //}
-        
-
-      
-
+             
         private void Form1_Load(object sender, EventArgs e)
         {
             defectCatalog.Items.Clear();

@@ -43,40 +43,35 @@ namespace WinFormLm
        }
         public static DataSet GetQueryResultSet(string queryStr)
         {
-            MySqlConnection myConnection = new MySqlConnection(MyCon);
-                //string connectionString = "Server=127.0.0.1;User ID=root;Password=;Database=fae_weekly;CharSet=utf8;";
-                //MySqlConnection myConnection;
-            //myConnection = SqlHelper.myGetConnection();
-            DataSet myDataSet = new DataSet();
-            MySqlCommand mySqlCommandQuery = new MySqlCommand(queryStr, myConnection);
-            try
+            using (MySqlConnection myConnection = new MySqlConnection(MyCon)) 
             {
-                myConnection.Open();
-                mySqlCommandQuery.Prepare();
-                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(mySqlCommandQuery);       
-                myDataAdapter.Fill(myDataSet);
-               
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
+              
+                DataSet myDataSet = new DataSet();
+                MySqlCommand mySqlCommandQuery = new MySqlCommand(queryStr, myConnection);
+                try
                 {
-                    case 0:
-                        MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
-                        break;
-                    case 1045:
-                        MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
-                        break;
-                }
-            }
-            finally
-            {
-                myConnection.Close();
-                //
-            }
-            return myDataSet;
-        }
+                    myConnection.Open();
+                    mySqlCommandQuery.Prepare();
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(mySqlCommandQuery);
+                    myDataAdapter.Fill(myDataSet);
 
+                }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 0:
+                            MessageBox.Show("Error " + ex.Number + " 数据库连接失败，请与系统管理员联系");
+                            break;
+                        case 1045:
+                            MessageBox.Show("Error " + ex.Number + " 无效的用户名/密码，请重试");
+                            break;
+                    }
+                }
+               
+                return myDataSet;
+            }
+        }
 
         /// <summary>
         /// 添加，修改，删除
@@ -95,7 +90,7 @@ namespace WinFormLm
                 }
                 catch(MySqlException ex)
                 {
-                   // MessageBox.Show(ex.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   MessageBox.Show(ex.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return 0;
                 }
            }
